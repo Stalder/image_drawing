@@ -16,8 +16,24 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DrawingOparationsEventTearOff {
   const _$DrawingOparationsEventTearOff();
 
-  _DrawingOparationsEventFetchFromNetwork fetchFromNetwork() {
-    return const _DrawingOparationsEventFetchFromNetwork();
+  _DrawingOparationsEventDraw draw() {
+    return const _DrawingOparationsEventDraw();
+  }
+
+  _DrawingOparationsEventUndo undo() {
+    return const _DrawingOparationsEventUndo();
+  }
+
+  _DrawingOparationsEventRedo redo() {
+    return const _DrawingOparationsEventRedo();
+  }
+
+  _DrawingOparationsEventClear clear() {
+    return const _DrawingOparationsEventClear();
+  }
+
+  _DrawingOparationsEventSave save() {
+    return const _DrawingOparationsEventSave();
   }
 }
 
@@ -28,25 +44,39 @@ const $DrawingOparationsEvent = _$DrawingOparationsEventTearOff();
 mixin _$DrawingOparationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchFromNetwork,
+    required TResult Function() draw,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function() clear,
+    required TResult Function() save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchFromNetwork,
+    TResult Function()? draw,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function()? clear,
+    TResult Function()? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DrawingOparationsEventFetchFromNetwork value)
-        fetchFromNetwork,
+    required TResult Function(_DrawingOparationsEventDraw value) draw,
+    required TResult Function(_DrawingOparationsEventUndo value) undo,
+    required TResult Function(_DrawingOparationsEventRedo value) redo,
+    required TResult Function(_DrawingOparationsEventClear value) clear,
+    required TResult Function(_DrawingOparationsEventSave value) save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DrawingOparationsEventFetchFromNetwork value)?
-        fetchFromNetwork,
+    TResult Function(_DrawingOparationsEventDraw value)? draw,
+    TResult Function(_DrawingOparationsEventUndo value)? undo,
+    TResult Function(_DrawingOparationsEventRedo value)? redo,
+    TResult Function(_DrawingOparationsEventClear value)? clear,
+    TResult Function(_DrawingOparationsEventSave value)? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,42 +100,38 @@ class _$DrawingOparationsEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DrawingOparationsEventFetchFromNetworkCopyWith<$Res> {
-  factory _$DrawingOparationsEventFetchFromNetworkCopyWith(
-          _DrawingOparationsEventFetchFromNetwork value,
-          $Res Function(_DrawingOparationsEventFetchFromNetwork) then) =
-      __$DrawingOparationsEventFetchFromNetworkCopyWithImpl<$Res>;
+abstract class _$DrawingOparationsEventDrawCopyWith<$Res> {
+  factory _$DrawingOparationsEventDrawCopyWith(
+          _DrawingOparationsEventDraw value,
+          $Res Function(_DrawingOparationsEventDraw) then) =
+      __$DrawingOparationsEventDrawCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$DrawingOparationsEventFetchFromNetworkCopyWithImpl<$Res>
+class __$DrawingOparationsEventDrawCopyWithImpl<$Res>
     extends _$DrawingOparationsEventCopyWithImpl<$Res>
-    implements _$DrawingOparationsEventFetchFromNetworkCopyWith<$Res> {
-  __$DrawingOparationsEventFetchFromNetworkCopyWithImpl(
-      _DrawingOparationsEventFetchFromNetwork _value,
-      $Res Function(_DrawingOparationsEventFetchFromNetwork) _then)
-      : super(
-            _value, (v) => _then(v as _DrawingOparationsEventFetchFromNetwork));
+    implements _$DrawingOparationsEventDrawCopyWith<$Res> {
+  __$DrawingOparationsEventDrawCopyWithImpl(_DrawingOparationsEventDraw _value,
+      $Res Function(_DrawingOparationsEventDraw) _then)
+      : super(_value, (v) => _then(v as _DrawingOparationsEventDraw));
 
   @override
-  _DrawingOparationsEventFetchFromNetwork get _value =>
-      super._value as _DrawingOparationsEventFetchFromNetwork;
+  _DrawingOparationsEventDraw get _value =>
+      super._value as _DrawingOparationsEventDraw;
 }
 
 /// @nodoc
-class _$_DrawingOparationsEventFetchFromNetwork
-    implements _DrawingOparationsEventFetchFromNetwork {
-  const _$_DrawingOparationsEventFetchFromNetwork();
+class _$_DrawingOparationsEventDraw implements _DrawingOparationsEventDraw {
+  const _$_DrawingOparationsEventDraw();
 
   @override
   String toString() {
-    return 'DrawingOparationsEvent.fetchFromNetwork()';
+    return 'DrawingOparationsEvent.draw()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _DrawingOparationsEventFetchFromNetwork);
+    return identical(this, other) || (other is _DrawingOparationsEventDraw);
   }
 
   @override
@@ -114,19 +140,27 @@ class _$_DrawingOparationsEventFetchFromNetwork
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchFromNetwork,
+    required TResult Function() draw,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function() clear,
+    required TResult Function() save,
   }) {
-    return fetchFromNetwork();
+    return draw();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchFromNetwork,
+    TResult Function()? draw,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function()? clear,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
-    if (fetchFromNetwork != null) {
-      return fetchFromNetwork();
+    if (draw != null) {
+      return draw();
     }
     return orElse();
   }
@@ -134,30 +168,431 @@ class _$_DrawingOparationsEventFetchFromNetwork
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_DrawingOparationsEventFetchFromNetwork value)
-        fetchFromNetwork,
+    required TResult Function(_DrawingOparationsEventDraw value) draw,
+    required TResult Function(_DrawingOparationsEventUndo value) undo,
+    required TResult Function(_DrawingOparationsEventRedo value) redo,
+    required TResult Function(_DrawingOparationsEventClear value) clear,
+    required TResult Function(_DrawingOparationsEventSave value) save,
   }) {
-    return fetchFromNetwork(this);
+    return draw(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DrawingOparationsEventFetchFromNetwork value)?
-        fetchFromNetwork,
+    TResult Function(_DrawingOparationsEventDraw value)? draw,
+    TResult Function(_DrawingOparationsEventUndo value)? undo,
+    TResult Function(_DrawingOparationsEventRedo value)? redo,
+    TResult Function(_DrawingOparationsEventClear value)? clear,
+    TResult Function(_DrawingOparationsEventSave value)? save,
     required TResult orElse(),
   }) {
-    if (fetchFromNetwork != null) {
-      return fetchFromNetwork(this);
+    if (draw != null) {
+      return draw(this);
     }
     return orElse();
   }
 }
 
-abstract class _DrawingOparationsEventFetchFromNetwork
-    implements DrawingOparationsEvent {
-  const factory _DrawingOparationsEventFetchFromNetwork() =
-      _$_DrawingOparationsEventFetchFromNetwork;
+abstract class _DrawingOparationsEventDraw implements DrawingOparationsEvent {
+  const factory _DrawingOparationsEventDraw() = _$_DrawingOparationsEventDraw;
+}
+
+/// @nodoc
+abstract class _$DrawingOparationsEventUndoCopyWith<$Res> {
+  factory _$DrawingOparationsEventUndoCopyWith(
+          _DrawingOparationsEventUndo value,
+          $Res Function(_DrawingOparationsEventUndo) then) =
+      __$DrawingOparationsEventUndoCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DrawingOparationsEventUndoCopyWithImpl<$Res>
+    extends _$DrawingOparationsEventCopyWithImpl<$Res>
+    implements _$DrawingOparationsEventUndoCopyWith<$Res> {
+  __$DrawingOparationsEventUndoCopyWithImpl(_DrawingOparationsEventUndo _value,
+      $Res Function(_DrawingOparationsEventUndo) _then)
+      : super(_value, (v) => _then(v as _DrawingOparationsEventUndo));
+
+  @override
+  _DrawingOparationsEventUndo get _value =>
+      super._value as _DrawingOparationsEventUndo;
+}
+
+/// @nodoc
+class _$_DrawingOparationsEventUndo implements _DrawingOparationsEventUndo {
+  const _$_DrawingOparationsEventUndo();
+
+  @override
+  String toString() {
+    return 'DrawingOparationsEvent.undo()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DrawingOparationsEventUndo);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() draw,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function() clear,
+    required TResult Function() save,
+  }) {
+    return undo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? draw,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function()? clear,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (undo != null) {
+      return undo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DrawingOparationsEventDraw value) draw,
+    required TResult Function(_DrawingOparationsEventUndo value) undo,
+    required TResult Function(_DrawingOparationsEventRedo value) redo,
+    required TResult Function(_DrawingOparationsEventClear value) clear,
+    required TResult Function(_DrawingOparationsEventSave value) save,
+  }) {
+    return undo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DrawingOparationsEventDraw value)? draw,
+    TResult Function(_DrawingOparationsEventUndo value)? undo,
+    TResult Function(_DrawingOparationsEventRedo value)? redo,
+    TResult Function(_DrawingOparationsEventClear value)? clear,
+    TResult Function(_DrawingOparationsEventSave value)? save,
+    required TResult orElse(),
+  }) {
+    if (undo != null) {
+      return undo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DrawingOparationsEventUndo implements DrawingOparationsEvent {
+  const factory _DrawingOparationsEventUndo() = _$_DrawingOparationsEventUndo;
+}
+
+/// @nodoc
+abstract class _$DrawingOparationsEventRedoCopyWith<$Res> {
+  factory _$DrawingOparationsEventRedoCopyWith(
+          _DrawingOparationsEventRedo value,
+          $Res Function(_DrawingOparationsEventRedo) then) =
+      __$DrawingOparationsEventRedoCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DrawingOparationsEventRedoCopyWithImpl<$Res>
+    extends _$DrawingOparationsEventCopyWithImpl<$Res>
+    implements _$DrawingOparationsEventRedoCopyWith<$Res> {
+  __$DrawingOparationsEventRedoCopyWithImpl(_DrawingOparationsEventRedo _value,
+      $Res Function(_DrawingOparationsEventRedo) _then)
+      : super(_value, (v) => _then(v as _DrawingOparationsEventRedo));
+
+  @override
+  _DrawingOparationsEventRedo get _value =>
+      super._value as _DrawingOparationsEventRedo;
+}
+
+/// @nodoc
+class _$_DrawingOparationsEventRedo implements _DrawingOparationsEventRedo {
+  const _$_DrawingOparationsEventRedo();
+
+  @override
+  String toString() {
+    return 'DrawingOparationsEvent.redo()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DrawingOparationsEventRedo);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() draw,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function() clear,
+    required TResult Function() save,
+  }) {
+    return redo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? draw,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function()? clear,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (redo != null) {
+      return redo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DrawingOparationsEventDraw value) draw,
+    required TResult Function(_DrawingOparationsEventUndo value) undo,
+    required TResult Function(_DrawingOparationsEventRedo value) redo,
+    required TResult Function(_DrawingOparationsEventClear value) clear,
+    required TResult Function(_DrawingOparationsEventSave value) save,
+  }) {
+    return redo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DrawingOparationsEventDraw value)? draw,
+    TResult Function(_DrawingOparationsEventUndo value)? undo,
+    TResult Function(_DrawingOparationsEventRedo value)? redo,
+    TResult Function(_DrawingOparationsEventClear value)? clear,
+    TResult Function(_DrawingOparationsEventSave value)? save,
+    required TResult orElse(),
+  }) {
+    if (redo != null) {
+      return redo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DrawingOparationsEventRedo implements DrawingOparationsEvent {
+  const factory _DrawingOparationsEventRedo() = _$_DrawingOparationsEventRedo;
+}
+
+/// @nodoc
+abstract class _$DrawingOparationsEventClearCopyWith<$Res> {
+  factory _$DrawingOparationsEventClearCopyWith(
+          _DrawingOparationsEventClear value,
+          $Res Function(_DrawingOparationsEventClear) then) =
+      __$DrawingOparationsEventClearCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DrawingOparationsEventClearCopyWithImpl<$Res>
+    extends _$DrawingOparationsEventCopyWithImpl<$Res>
+    implements _$DrawingOparationsEventClearCopyWith<$Res> {
+  __$DrawingOparationsEventClearCopyWithImpl(
+      _DrawingOparationsEventClear _value,
+      $Res Function(_DrawingOparationsEventClear) _then)
+      : super(_value, (v) => _then(v as _DrawingOparationsEventClear));
+
+  @override
+  _DrawingOparationsEventClear get _value =>
+      super._value as _DrawingOparationsEventClear;
+}
+
+/// @nodoc
+class _$_DrawingOparationsEventClear implements _DrawingOparationsEventClear {
+  const _$_DrawingOparationsEventClear();
+
+  @override
+  String toString() {
+    return 'DrawingOparationsEvent.clear()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DrawingOparationsEventClear);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() draw,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function() clear,
+    required TResult Function() save,
+  }) {
+    return clear();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? draw,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function()? clear,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DrawingOparationsEventDraw value) draw,
+    required TResult Function(_DrawingOparationsEventUndo value) undo,
+    required TResult Function(_DrawingOparationsEventRedo value) redo,
+    required TResult Function(_DrawingOparationsEventClear value) clear,
+    required TResult Function(_DrawingOparationsEventSave value) save,
+  }) {
+    return clear(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DrawingOparationsEventDraw value)? draw,
+    TResult Function(_DrawingOparationsEventUndo value)? undo,
+    TResult Function(_DrawingOparationsEventRedo value)? redo,
+    TResult Function(_DrawingOparationsEventClear value)? clear,
+    TResult Function(_DrawingOparationsEventSave value)? save,
+    required TResult orElse(),
+  }) {
+    if (clear != null) {
+      return clear(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DrawingOparationsEventClear implements DrawingOparationsEvent {
+  const factory _DrawingOparationsEventClear() = _$_DrawingOparationsEventClear;
+}
+
+/// @nodoc
+abstract class _$DrawingOparationsEventSaveCopyWith<$Res> {
+  factory _$DrawingOparationsEventSaveCopyWith(
+          _DrawingOparationsEventSave value,
+          $Res Function(_DrawingOparationsEventSave) then) =
+      __$DrawingOparationsEventSaveCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DrawingOparationsEventSaveCopyWithImpl<$Res>
+    extends _$DrawingOparationsEventCopyWithImpl<$Res>
+    implements _$DrawingOparationsEventSaveCopyWith<$Res> {
+  __$DrawingOparationsEventSaveCopyWithImpl(_DrawingOparationsEventSave _value,
+      $Res Function(_DrawingOparationsEventSave) _then)
+      : super(_value, (v) => _then(v as _DrawingOparationsEventSave));
+
+  @override
+  _DrawingOparationsEventSave get _value =>
+      super._value as _DrawingOparationsEventSave;
+}
+
+/// @nodoc
+class _$_DrawingOparationsEventSave implements _DrawingOparationsEventSave {
+  const _$_DrawingOparationsEventSave();
+
+  @override
+  String toString() {
+    return 'DrawingOparationsEvent.save()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DrawingOparationsEventSave);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() draw,
+    required TResult Function() undo,
+    required TResult Function() redo,
+    required TResult Function() clear,
+    required TResult Function() save,
+  }) {
+    return save();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? draw,
+    TResult Function()? undo,
+    TResult Function()? redo,
+    TResult Function()? clear,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DrawingOparationsEventDraw value) draw,
+    required TResult Function(_DrawingOparationsEventUndo value) undo,
+    required TResult Function(_DrawingOparationsEventRedo value) redo,
+    required TResult Function(_DrawingOparationsEventClear value) clear,
+    required TResult Function(_DrawingOparationsEventSave value) save,
+  }) {
+    return save(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_DrawingOparationsEventDraw value)? draw,
+    TResult Function(_DrawingOparationsEventUndo value)? undo,
+    TResult Function(_DrawingOparationsEventRedo value)? redo,
+    TResult Function(_DrawingOparationsEventClear value)? clear,
+    TResult Function(_DrawingOparationsEventSave value)? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DrawingOparationsEventSave implements DrawingOparationsEvent {
+  const factory _DrawingOparationsEventSave() = _$_DrawingOparationsEventSave;
 }
 
 /// @nodoc

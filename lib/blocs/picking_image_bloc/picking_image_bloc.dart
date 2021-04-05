@@ -14,7 +14,10 @@ class PickingImageBloc extends Bloc<PickingImageEvent, PickingImageState> {
   PickingImageBloc(this._imagePicker) : super(const PickingImageState.initial());
 
   @override
-  Stream<PickingImageState> mapEventToState(PickingImageEvent event) => event.when(selectImage: _selectImage);
+  Stream<PickingImageState> mapEventToState(PickingImageEvent event) => event.when(
+        selectImage: _selectImage,
+        reset: _reset,
+      );
 
   Stream<PickingImageState> _selectImage() async* {
     yield const PickingImageState.choosingImage();
@@ -30,5 +33,9 @@ class PickingImageBloc extends Bloc<PickingImageEvent, PickingImageState> {
     } catch (_) {
       yield const PickingImageState.failed();
     }
+  }
+
+  Stream<PickingImageState> _reset() async* {
+    yield const PickingImageState.initial();
   }
 }

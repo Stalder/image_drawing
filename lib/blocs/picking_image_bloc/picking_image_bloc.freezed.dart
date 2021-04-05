@@ -19,6 +19,10 @@ class _$PickingImageEventTearOff {
   _PickingImageEventSelectImage selectImage() {
     return const _PickingImageEventSelectImage();
   }
+
+  _PickingImageEventReset reset() {
+    return const _PickingImageEventReset();
+  }
 }
 
 /// @nodoc
@@ -29,22 +33,26 @@ mixin _$PickingImageEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() selectImage,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? selectImage,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PickingImageEventSelectImage value) selectImage,
+    required TResult Function(_PickingImageEventReset value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickingImageEventSelectImage value)? selectImage,
+    TResult Function(_PickingImageEventReset value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -110,6 +118,7 @@ class _$_PickingImageEventSelectImage implements _PickingImageEventSelectImage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() selectImage,
+    required TResult Function() reset,
   }) {
     return selectImage();
   }
@@ -118,6 +127,7 @@ class _$_PickingImageEventSelectImage implements _PickingImageEventSelectImage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? selectImage,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (selectImage != null) {
@@ -130,6 +140,7 @@ class _$_PickingImageEventSelectImage implements _PickingImageEventSelectImage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PickingImageEventSelectImage value) selectImage,
+    required TResult Function(_PickingImageEventReset value) reset,
   }) {
     return selectImage(this);
   }
@@ -138,6 +149,7 @@ class _$_PickingImageEventSelectImage implements _PickingImageEventSelectImage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickingImageEventSelectImage value)? selectImage,
+    TResult Function(_PickingImageEventReset value)? reset,
     required TResult orElse(),
   }) {
     if (selectImage != null) {
@@ -150,6 +162,91 @@ class _$_PickingImageEventSelectImage implements _PickingImageEventSelectImage {
 abstract class _PickingImageEventSelectImage implements PickingImageEvent {
   const factory _PickingImageEventSelectImage() =
       _$_PickingImageEventSelectImage;
+}
+
+/// @nodoc
+abstract class _$PickingImageEventResetCopyWith<$Res> {
+  factory _$PickingImageEventResetCopyWith(_PickingImageEventReset value,
+          $Res Function(_PickingImageEventReset) then) =
+      __$PickingImageEventResetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$PickingImageEventResetCopyWithImpl<$Res>
+    extends _$PickingImageEventCopyWithImpl<$Res>
+    implements _$PickingImageEventResetCopyWith<$Res> {
+  __$PickingImageEventResetCopyWithImpl(_PickingImageEventReset _value,
+      $Res Function(_PickingImageEventReset) _then)
+      : super(_value, (v) => _then(v as _PickingImageEventReset));
+
+  @override
+  _PickingImageEventReset get _value => super._value as _PickingImageEventReset;
+}
+
+/// @nodoc
+class _$_PickingImageEventReset implements _PickingImageEventReset {
+  const _$_PickingImageEventReset();
+
+  @override
+  String toString() {
+    return 'PickingImageEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _PickingImageEventReset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() selectImage,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? selectImage,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PickingImageEventSelectImage value) selectImage,
+    required TResult Function(_PickingImageEventReset value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PickingImageEventSelectImage value)? selectImage,
+    TResult Function(_PickingImageEventReset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PickingImageEventReset implements PickingImageEvent {
+  const factory _PickingImageEventReset() = _$_PickingImageEventReset;
 }
 
 /// @nodoc
