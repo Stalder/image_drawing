@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$PickingImageEventTearOff {
   const _$PickingImageEventTearOff();
 
-  _PickingImageEventFetchFromNetwork fetchFromNetwork() {
-    return const _PickingImageEventFetchFromNetwork();
+  _PickingImageEventSelectImage selectImage() {
+    return const _PickingImageEventSelectImage();
   }
 }
 
@@ -28,25 +28,23 @@ const $PickingImageEvent = _$PickingImageEventTearOff();
 mixin _$PickingImageEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchFromNetwork,
+    required TResult Function() selectImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchFromNetwork,
+    TResult Function()? selectImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PickingImageEventFetchFromNetwork value)
-        fetchFromNetwork,
+    required TResult Function(_PickingImageEventSelectImage value) selectImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PickingImageEventFetchFromNetwork value)?
-        fetchFromNetwork,
+    TResult Function(_PickingImageEventSelectImage value)? selectImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,41 +68,39 @@ class _$PickingImageEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$PickingImageEventFetchFromNetworkCopyWith<$Res> {
-  factory _$PickingImageEventFetchFromNetworkCopyWith(
-          _PickingImageEventFetchFromNetwork value,
-          $Res Function(_PickingImageEventFetchFromNetwork) then) =
-      __$PickingImageEventFetchFromNetworkCopyWithImpl<$Res>;
+abstract class _$PickingImageEventSelectImageCopyWith<$Res> {
+  factory _$PickingImageEventSelectImageCopyWith(
+          _PickingImageEventSelectImage value,
+          $Res Function(_PickingImageEventSelectImage) then) =
+      __$PickingImageEventSelectImageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$PickingImageEventFetchFromNetworkCopyWithImpl<$Res>
+class __$PickingImageEventSelectImageCopyWithImpl<$Res>
     extends _$PickingImageEventCopyWithImpl<$Res>
-    implements _$PickingImageEventFetchFromNetworkCopyWith<$Res> {
-  __$PickingImageEventFetchFromNetworkCopyWithImpl(
-      _PickingImageEventFetchFromNetwork _value,
-      $Res Function(_PickingImageEventFetchFromNetwork) _then)
-      : super(_value, (v) => _then(v as _PickingImageEventFetchFromNetwork));
+    implements _$PickingImageEventSelectImageCopyWith<$Res> {
+  __$PickingImageEventSelectImageCopyWithImpl(
+      _PickingImageEventSelectImage _value,
+      $Res Function(_PickingImageEventSelectImage) _then)
+      : super(_value, (v) => _then(v as _PickingImageEventSelectImage));
 
   @override
-  _PickingImageEventFetchFromNetwork get _value =>
-      super._value as _PickingImageEventFetchFromNetwork;
+  _PickingImageEventSelectImage get _value =>
+      super._value as _PickingImageEventSelectImage;
 }
 
 /// @nodoc
-class _$_PickingImageEventFetchFromNetwork
-    implements _PickingImageEventFetchFromNetwork {
-  const _$_PickingImageEventFetchFromNetwork();
+class _$_PickingImageEventSelectImage implements _PickingImageEventSelectImage {
+  const _$_PickingImageEventSelectImage();
 
   @override
   String toString() {
-    return 'PickingImageEvent.fetchFromNetwork()';
+    return 'PickingImageEvent.selectImage()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _PickingImageEventFetchFromNetwork);
+    return identical(this, other) || (other is _PickingImageEventSelectImage);
   }
 
   @override
@@ -113,19 +109,19 @@ class _$_PickingImageEventFetchFromNetwork
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchFromNetwork,
+    required TResult Function() selectImage,
   }) {
-    return fetchFromNetwork();
+    return selectImage();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchFromNetwork,
+    TResult Function()? selectImage,
     required TResult orElse(),
   }) {
-    if (fetchFromNetwork != null) {
-      return fetchFromNetwork();
+    if (selectImage != null) {
+      return selectImage();
     }
     return orElse();
   }
@@ -133,29 +129,27 @@ class _$_PickingImageEventFetchFromNetwork
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_PickingImageEventFetchFromNetwork value)
-        fetchFromNetwork,
+    required TResult Function(_PickingImageEventSelectImage value) selectImage,
   }) {
-    return fetchFromNetwork(this);
+    return selectImage(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_PickingImageEventFetchFromNetwork value)?
-        fetchFromNetwork,
+    TResult Function(_PickingImageEventSelectImage value)? selectImage,
     required TResult orElse(),
   }) {
-    if (fetchFromNetwork != null) {
-      return fetchFromNetwork(this);
+    if (selectImage != null) {
+      return selectImage(this);
     }
     return orElse();
   }
 }
 
-abstract class _PickingImageEventFetchFromNetwork implements PickingImageEvent {
-  const factory _PickingImageEventFetchFromNetwork() =
-      _$_PickingImageEventFetchFromNetwork;
+abstract class _PickingImageEventSelectImage implements PickingImageEvent {
+  const factory _PickingImageEventSelectImage() =
+      _$_PickingImageEventSelectImage;
 }
 
 /// @nodoc
@@ -166,12 +160,14 @@ class _$PickingImageStateTearOff {
     return const _PickingImageStateInitial();
   }
 
-  _PickingImageStatePending pending() {
-    return const _PickingImageStatePending();
+  _PickingImageStateChoosingImage choosingImage() {
+    return const _PickingImageStateChoosingImage();
   }
 
-  _PickingImageStateSucceeded succeeded() {
-    return const _PickingImageStateSucceeded();
+  _PickingImageStateImageSelected imageSelected(String imagePath) {
+    return _PickingImageStateImageSelected(
+      imagePath,
+    );
   }
 
   _PickingImageStateFailed failed() {
@@ -187,16 +183,16 @@ mixin _$PickingImageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() pending,
-    required TResult Function() succeeded,
+    required TResult Function() choosingImage,
+    required TResult Function(String imagePath) imageSelected,
     required TResult Function() failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? pending,
-    TResult Function()? succeeded,
+    TResult Function()? choosingImage,
+    TResult Function(String imagePath)? imageSelected,
     TResult Function()? failed,
     required TResult orElse(),
   }) =>
@@ -204,16 +200,18 @@ mixin _$PickingImageState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PickingImageStateInitial value) initial,
-    required TResult Function(_PickingImageStatePending value) pending,
-    required TResult Function(_PickingImageStateSucceeded value) succeeded,
+    required TResult Function(_PickingImageStateChoosingImage value)
+        choosingImage,
+    required TResult Function(_PickingImageStateImageSelected value)
+        imageSelected,
     required TResult Function(_PickingImageStateFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickingImageStateInitial value)? initial,
-    TResult Function(_PickingImageStatePending value)? pending,
-    TResult Function(_PickingImageStateSucceeded value)? succeeded,
+    TResult Function(_PickingImageStateChoosingImage value)? choosingImage,
+    TResult Function(_PickingImageStateImageSelected value)? imageSelected,
     TResult Function(_PickingImageStateFailed value)? failed,
     required TResult orElse(),
   }) =>
@@ -278,8 +276,8 @@ class _$_PickingImageStateInitial implements _PickingImageStateInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() pending,
-    required TResult Function() succeeded,
+    required TResult Function() choosingImage,
+    required TResult Function(String imagePath) imageSelected,
     required TResult Function() failed,
   }) {
     return initial();
@@ -289,8 +287,8 @@ class _$_PickingImageStateInitial implements _PickingImageStateInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? pending,
-    TResult Function()? succeeded,
+    TResult Function()? choosingImage,
+    TResult Function(String imagePath)? imageSelected,
     TResult Function()? failed,
     required TResult orElse(),
   }) {
@@ -304,8 +302,10 @@ class _$_PickingImageStateInitial implements _PickingImageStateInitial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PickingImageStateInitial value) initial,
-    required TResult Function(_PickingImageStatePending value) pending,
-    required TResult Function(_PickingImageStateSucceeded value) succeeded,
+    required TResult Function(_PickingImageStateChoosingImage value)
+        choosingImage,
+    required TResult Function(_PickingImageStateImageSelected value)
+        imageSelected,
     required TResult Function(_PickingImageStateFailed value) failed,
   }) {
     return initial(this);
@@ -315,8 +315,8 @@ class _$_PickingImageStateInitial implements _PickingImageStateInitial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickingImageStateInitial value)? initial,
-    TResult Function(_PickingImageStatePending value)? pending,
-    TResult Function(_PickingImageStateSucceeded value)? succeeded,
+    TResult Function(_PickingImageStateChoosingImage value)? choosingImage,
+    TResult Function(_PickingImageStateImageSelected value)? imageSelected,
     TResult Function(_PickingImageStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -332,37 +332,40 @@ abstract class _PickingImageStateInitial implements PickingImageState {
 }
 
 /// @nodoc
-abstract class _$PickingImageStatePendingCopyWith<$Res> {
-  factory _$PickingImageStatePendingCopyWith(_PickingImageStatePending value,
-          $Res Function(_PickingImageStatePending) then) =
-      __$PickingImageStatePendingCopyWithImpl<$Res>;
+abstract class _$PickingImageStateChoosingImageCopyWith<$Res> {
+  factory _$PickingImageStateChoosingImageCopyWith(
+          _PickingImageStateChoosingImage value,
+          $Res Function(_PickingImageStateChoosingImage) then) =
+      __$PickingImageStateChoosingImageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$PickingImageStatePendingCopyWithImpl<$Res>
+class __$PickingImageStateChoosingImageCopyWithImpl<$Res>
     extends _$PickingImageStateCopyWithImpl<$Res>
-    implements _$PickingImageStatePendingCopyWith<$Res> {
-  __$PickingImageStatePendingCopyWithImpl(_PickingImageStatePending _value,
-      $Res Function(_PickingImageStatePending) _then)
-      : super(_value, (v) => _then(v as _PickingImageStatePending));
+    implements _$PickingImageStateChoosingImageCopyWith<$Res> {
+  __$PickingImageStateChoosingImageCopyWithImpl(
+      _PickingImageStateChoosingImage _value,
+      $Res Function(_PickingImageStateChoosingImage) _then)
+      : super(_value, (v) => _then(v as _PickingImageStateChoosingImage));
 
   @override
-  _PickingImageStatePending get _value =>
-      super._value as _PickingImageStatePending;
+  _PickingImageStateChoosingImage get _value =>
+      super._value as _PickingImageStateChoosingImage;
 }
 
 /// @nodoc
-class _$_PickingImageStatePending implements _PickingImageStatePending {
-  const _$_PickingImageStatePending();
+class _$_PickingImageStateChoosingImage
+    implements _PickingImageStateChoosingImage {
+  const _$_PickingImageStateChoosingImage();
 
   @override
   String toString() {
-    return 'PickingImageState.pending()';
+    return 'PickingImageState.choosingImage()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _PickingImageStatePending);
+    return identical(this, other) || (other is _PickingImageStateChoosingImage);
   }
 
   @override
@@ -372,24 +375,24 @@ class _$_PickingImageStatePending implements _PickingImageStatePending {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() pending,
-    required TResult Function() succeeded,
+    required TResult Function() choosingImage,
+    required TResult Function(String imagePath) imageSelected,
     required TResult Function() failed,
   }) {
-    return pending();
+    return choosingImage();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? pending,
-    TResult Function()? succeeded,
+    TResult Function()? choosingImage,
+    TResult Function(String imagePath)? imageSelected,
     TResult Function()? failed,
     required TResult orElse(),
   }) {
-    if (pending != null) {
-      return pending();
+    if (choosingImage != null) {
+      return choosingImage();
     }
     return orElse();
   }
@@ -398,93 +401,125 @@ class _$_PickingImageStatePending implements _PickingImageStatePending {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PickingImageStateInitial value) initial,
-    required TResult Function(_PickingImageStatePending value) pending,
-    required TResult Function(_PickingImageStateSucceeded value) succeeded,
+    required TResult Function(_PickingImageStateChoosingImage value)
+        choosingImage,
+    required TResult Function(_PickingImageStateImageSelected value)
+        imageSelected,
     required TResult Function(_PickingImageStateFailed value) failed,
   }) {
-    return pending(this);
+    return choosingImage(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickingImageStateInitial value)? initial,
-    TResult Function(_PickingImageStatePending value)? pending,
-    TResult Function(_PickingImageStateSucceeded value)? succeeded,
+    TResult Function(_PickingImageStateChoosingImage value)? choosingImage,
+    TResult Function(_PickingImageStateImageSelected value)? imageSelected,
     TResult Function(_PickingImageStateFailed value)? failed,
     required TResult orElse(),
   }) {
-    if (pending != null) {
-      return pending(this);
+    if (choosingImage != null) {
+      return choosingImage(this);
     }
     return orElse();
   }
 }
 
-abstract class _PickingImageStatePending implements PickingImageState {
-  const factory _PickingImageStatePending() = _$_PickingImageStatePending;
+abstract class _PickingImageStateChoosingImage implements PickingImageState {
+  const factory _PickingImageStateChoosingImage() =
+      _$_PickingImageStateChoosingImage;
 }
 
 /// @nodoc
-abstract class _$PickingImageStateSucceededCopyWith<$Res> {
-  factory _$PickingImageStateSucceededCopyWith(
-          _PickingImageStateSucceeded value,
-          $Res Function(_PickingImageStateSucceeded) then) =
-      __$PickingImageStateSucceededCopyWithImpl<$Res>;
+abstract class _$PickingImageStateImageSelectedCopyWith<$Res> {
+  factory _$PickingImageStateImageSelectedCopyWith(
+          _PickingImageStateImageSelected value,
+          $Res Function(_PickingImageStateImageSelected) then) =
+      __$PickingImageStateImageSelectedCopyWithImpl<$Res>;
+  $Res call({String imagePath});
 }
 
 /// @nodoc
-class __$PickingImageStateSucceededCopyWithImpl<$Res>
+class __$PickingImageStateImageSelectedCopyWithImpl<$Res>
     extends _$PickingImageStateCopyWithImpl<$Res>
-    implements _$PickingImageStateSucceededCopyWith<$Res> {
-  __$PickingImageStateSucceededCopyWithImpl(_PickingImageStateSucceeded _value,
-      $Res Function(_PickingImageStateSucceeded) _then)
-      : super(_value, (v) => _then(v as _PickingImageStateSucceeded));
+    implements _$PickingImageStateImageSelectedCopyWith<$Res> {
+  __$PickingImageStateImageSelectedCopyWithImpl(
+      _PickingImageStateImageSelected _value,
+      $Res Function(_PickingImageStateImageSelected) _then)
+      : super(_value, (v) => _then(v as _PickingImageStateImageSelected));
 
   @override
-  _PickingImageStateSucceeded get _value =>
-      super._value as _PickingImageStateSucceeded;
+  _PickingImageStateImageSelected get _value =>
+      super._value as _PickingImageStateImageSelected;
+
+  @override
+  $Res call({
+    Object? imagePath = freezed,
+  }) {
+    return _then(_PickingImageStateImageSelected(
+      imagePath == freezed
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-class _$_PickingImageStateSucceeded implements _PickingImageStateSucceeded {
-  const _$_PickingImageStateSucceeded();
+class _$_PickingImageStateImageSelected
+    implements _PickingImageStateImageSelected {
+  const _$_PickingImageStateImageSelected(this.imagePath);
+
+  @override
+  final String imagePath;
 
   @override
   String toString() {
-    return 'PickingImageState.succeeded()';
+    return 'PickingImageState.imageSelected(imagePath: $imagePath)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _PickingImageStateSucceeded);
+    return identical(this, other) ||
+        (other is _PickingImageStateImageSelected &&
+            (identical(other.imagePath, imagePath) ||
+                const DeepCollectionEquality()
+                    .equals(other.imagePath, imagePath)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(imagePath);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PickingImageStateImageSelectedCopyWith<_PickingImageStateImageSelected>
+      get copyWith => __$PickingImageStateImageSelectedCopyWithImpl<
+          _PickingImageStateImageSelected>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() pending,
-    required TResult Function() succeeded,
+    required TResult Function() choosingImage,
+    required TResult Function(String imagePath) imageSelected,
     required TResult Function() failed,
   }) {
-    return succeeded();
+    return imageSelected(imagePath);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? pending,
-    TResult Function()? succeeded,
+    TResult Function()? choosingImage,
+    TResult Function(String imagePath)? imageSelected,
     TResult Function()? failed,
     required TResult orElse(),
   }) {
-    if (succeeded != null) {
-      return succeeded();
+    if (imageSelected != null) {
+      return imageSelected(imagePath);
     }
     return orElse();
   }
@@ -493,31 +528,39 @@ class _$_PickingImageStateSucceeded implements _PickingImageStateSucceeded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PickingImageStateInitial value) initial,
-    required TResult Function(_PickingImageStatePending value) pending,
-    required TResult Function(_PickingImageStateSucceeded value) succeeded,
+    required TResult Function(_PickingImageStateChoosingImage value)
+        choosingImage,
+    required TResult Function(_PickingImageStateImageSelected value)
+        imageSelected,
     required TResult Function(_PickingImageStateFailed value) failed,
   }) {
-    return succeeded(this);
+    return imageSelected(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickingImageStateInitial value)? initial,
-    TResult Function(_PickingImageStatePending value)? pending,
-    TResult Function(_PickingImageStateSucceeded value)? succeeded,
+    TResult Function(_PickingImageStateChoosingImage value)? choosingImage,
+    TResult Function(_PickingImageStateImageSelected value)? imageSelected,
     TResult Function(_PickingImageStateFailed value)? failed,
     required TResult orElse(),
   }) {
-    if (succeeded != null) {
-      return succeeded(this);
+    if (imageSelected != null) {
+      return imageSelected(this);
     }
     return orElse();
   }
 }
 
-abstract class _PickingImageStateSucceeded implements PickingImageState {
-  const factory _PickingImageStateSucceeded() = _$_PickingImageStateSucceeded;
+abstract class _PickingImageStateImageSelected implements PickingImageState {
+  const factory _PickingImageStateImageSelected(String imagePath) =
+      _$_PickingImageStateImageSelected;
+
+  String get imagePath => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$PickingImageStateImageSelectedCopyWith<_PickingImageStateImageSelected>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -561,8 +604,8 @@ class _$_PickingImageStateFailed implements _PickingImageStateFailed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() pending,
-    required TResult Function() succeeded,
+    required TResult Function() choosingImage,
+    required TResult Function(String imagePath) imageSelected,
     required TResult Function() failed,
   }) {
     return failed();
@@ -572,8 +615,8 @@ class _$_PickingImageStateFailed implements _PickingImageStateFailed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? pending,
-    TResult Function()? succeeded,
+    TResult Function()? choosingImage,
+    TResult Function(String imagePath)? imageSelected,
     TResult Function()? failed,
     required TResult orElse(),
   }) {
@@ -587,8 +630,10 @@ class _$_PickingImageStateFailed implements _PickingImageStateFailed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PickingImageStateInitial value) initial,
-    required TResult Function(_PickingImageStatePending value) pending,
-    required TResult Function(_PickingImageStateSucceeded value) succeeded,
+    required TResult Function(_PickingImageStateChoosingImage value)
+        choosingImage,
+    required TResult Function(_PickingImageStateImageSelected value)
+        imageSelected,
     required TResult Function(_PickingImageStateFailed value) failed,
   }) {
     return failed(this);
@@ -598,8 +643,8 @@ class _$_PickingImageStateFailed implements _PickingImageStateFailed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PickingImageStateInitial value)? initial,
-    TResult Function(_PickingImageStatePending value)? pending,
-    TResult Function(_PickingImageStateSucceeded value)? succeeded,
+    TResult Function(_PickingImageStateChoosingImage value)? choosingImage,
+    TResult Function(_PickingImageStateImageSelected value)? imageSelected,
     TResult Function(_PickingImageStateFailed value)? failed,
     required TResult orElse(),
   }) {

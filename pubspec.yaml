@@ -13,14 +13,17 @@ dependencies:
     sdk: flutter
   
   bloc: ^7.0.0
+  flutter_bloc: ^7.0.0
   freezed_annotation: ^0.14.1
   image_picker: ^0.7.4
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   pedantic: ^1.11.0
+  mockito: ^5.0.3
 
   build_runner: ^1.12.2
   freezed: ^0.14.1+2

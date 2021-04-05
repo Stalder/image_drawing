@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_drawing/services/image_picker_service.dart';
+
+import 'blocs/picking_image_bloc/picking_image_bloc.dart';
+
 import 'widgets/canvas_content/canvas_content.dart';
 import 'widgets/choose_image_content/choose_image_content.dart';
 
@@ -29,15 +34,27 @@ class ImageDrawingHomePage extends StatefulWidget {
 }
 
 class _ImageDrawingHomePageState extends State<ImageDrawingHomePage> {
-  final _isImageChosen = false;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Image Drawing'),
+    return BlocProvider(
+      create: (context) => PickingImageBloc(ImagePickerService()),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Image Drawing'),
+        ),
+        body: BlocBuilder<PickingImageBloc, PickingImageState>(
+          buildWhen: (prev, next) => next.maybeWhen(
+            initial: () => true,
+            imageSelected: (_) => true,
+            orElse: () => false,
+          ),
+          builder: (context, state) => state.maybeWhen(
+            imageSelected: (_) => const CanvasContent(),
+            failed: () => const SizedBox.shrink(),
+            orElse: () => const ChooseImageContent(),
+          ),
+        ),
       ),
-      body: _isImageChosen ? const CanvasContent() : const ChooseImageContent(),
     );
   }
 }
