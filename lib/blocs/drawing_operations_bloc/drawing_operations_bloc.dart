@@ -16,7 +16,7 @@ class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperatio
   final ImageSaver _imageSaver;
   final SaveNotifier _saveNotifier;
 
-  final _canceledList = <DrawingLayer>[];
+  final _canceledList = <DrawOperation>[];
 
   DrawingOperationsBloc({
     required ImageExtractor imageExtractor,
@@ -42,26 +42,31 @@ class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperatio
   }
 
   Stream<DrawingOperationsState> _undo() async* {
-    _canceledList.add(state.layers.last);
-    yield DrawingOperationsState.displaying(state.layers.whereNot((layer) => layer == state.layers.last).toList());
+    if (state.layers.isNotEmpty) {
+      _canceledList.add(DrawOperation.single(state.layers.last));
+
+      yield DrawingOperationsState.displaying(state.layers.whereNot((layer) => layer == state.layers.last).toList());
+    }
   }
 
   Stream<DrawingOperationsState> _redo() async* {
     if (_canceledList.isNotEmpty) {
-      final layerToRestore = _canceledList.removeLast();
+      final operationToRestore = _canceledList.removeLast();
 
-      yield DrawingOperationsState.displaying([...state.layers, layerToRestore]);
+      yield DrawingOperationsState.displaying([...state.layers, ...operationToRestore.layers]);
     }
   }
 
   Stream<DrawingOperationsState> _clear() async* {
+    _canceledList.add(DrawOperation(state.layers));
+
     yield const DrawingOperationsState.displaying([]);
   }
 
   Stream<DrawingOperationsState> _save() async* {
     final image = await _imageExtractor.extractImage();
     try {
-      await _imageSaver.saveImage(image);
+      await _imageSaver.saveImage(image).timeout(const Duration(seconds: 5));
       _saveNotifier.notifyAboutSuccessfullSave();
     } catch (_) {
       _saveNotifier.notifyAboutFailOnSave();
