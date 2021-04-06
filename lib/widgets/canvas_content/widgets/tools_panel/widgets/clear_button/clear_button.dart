@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_drawing/blocs/drawing_oparations_bloc/drawing_oparations_bloc.dart';
+import 'package:image_drawing/blocs/drawing_operations_bloc/drawing_operations_bloc.dart';
 
 class ClearButton extends StatelessWidget {
   const ClearButton({
@@ -10,10 +10,10 @@ class ClearButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<DrawingOparationsBloc>(context);
+    final bloc = BlocProvider.of<DrawingOperationsBloc>(context);
 
     return IconButton(
-      onPressed: () => bloc.add(const DrawingOparationsEvent.clear()),
+      onPressed: () => bloc.add(const DrawingOperationsEvent.clear()),
       icon: const Icon(Icons.clear_all),
     );
   }

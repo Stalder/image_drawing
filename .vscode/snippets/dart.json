@@ -1,0 +1,31 @@
+{
+    "Create freezed simple DTO": {
+        "prefix": "no_dto",
+        "body": [
+            "@freezed",
+            "abstract class $0 with _$$0 {",
+            "  factory $0($1) = _$0;",
+            "}"
+        ],
+        "description": "Create freezed simple DTO"
+    },
+    "Create presenter fabric": {
+        "prefix": "no_presenter_fabric",
+        "body": [
+            "$0 create$0(BuildContext context) {",
+            "    return $0();",
+            "}"
+        ],
+        "description": "Create presenter fabric"
+    },
+    "Create test": {
+        "prefix": "no_test",
+        "body": [
+            "test('$1', () async {",
+            "    $0",
+            "    expect(true, true);",
+            "});"
+        ],
+        "description": "Create test"
+    }
+}

@@ -1,10 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_drawing/blocs/drawing_oparations_bloc/drawing_oparations_bloc.dart';
-import 'widgets/image_background/image_background.dart';
-import 'widgets/user_drawings/user_drawings.dart';
+import 'package:image_drawing/blocs/drawing_bloc/drawing_bloc.dart';
+import 'package:image_drawing/blocs/drawing_operations_bloc/drawing_operations_bloc.dart';
 import 'widgets/tools_panel/tools_panel.dart';
-import 'widgets/current_user_drawing_session/current_user_drawing_session.dart';
+import 'widgets/canvas_with_image/canvas_with_image.dart';
 
 class CanvasContent extends StatelessWidget {
   const CanvasContent({
@@ -14,14 +13,15 @@ class CanvasContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => DrawingOparationsBloc(),
-      child: Stack(
-        children: const [
-          ImageBackground(),
-          UserDrawings(),
-          CurrentUserDrawingSession(),
-          ToolsPanel(),
-        ],
+      create: (_) => DrawingOperationsBloc(),
+      child: BlocProvider(
+        create: (context) => DrawingBloc(),
+        child: Stack(
+          children: const [
+            CanvasWithImage(),
+            ToolsPanel(),
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_drawing/blocs/drawing_oparations_bloc/drawing_oparations_bloc.dart';
+import 'package:image_drawing/blocs/drawing_operations_bloc/drawing_operations_bloc.dart';
 
 class UndoButton extends StatelessWidget {
   const UndoButton({
@@ -9,10 +9,10 @@ class UndoButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<DrawingOparationsBloc>(context);
+    final bloc = BlocProvider.of<DrawingOperationsBloc>(context);
 
     return IconButton(
-      onPressed: () => bloc.add(const DrawingOparationsEvent.undo()),
+      onPressed: () => bloc.add(const DrawingOperationsEvent.undo()),
       icon: const Icon(Icons.undo),
     );
   }

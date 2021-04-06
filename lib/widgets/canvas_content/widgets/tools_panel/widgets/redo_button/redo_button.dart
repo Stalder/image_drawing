@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:image_drawing/blocs/drawing_oparations_bloc/drawing_oparations_bloc.dart';
+import 'package:image_drawing/blocs/drawing_operations_bloc/drawing_operations_bloc.dart';
 
 class RedoButton extends StatelessWidget {
   const RedoButton({
@@ -10,10 +10,10 @@ class RedoButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<DrawingOparationsBloc>(context);
+    final bloc = BlocProvider.of<DrawingOperationsBloc>(context);
 
     return IconButton(
-      onPressed: () => bloc.add(const DrawingOparationsEvent.redo()),
+      onPressed: () => bloc.add(const DrawingOperationsEvent.redo()),
       icon: const Icon(Icons.redo),
     );
   }
