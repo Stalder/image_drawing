@@ -20,6 +20,14 @@ class CurrentUserDrawingSession extends StatefulWidget {
 class _CurrentUserDrawingSessionState extends State<CurrentUserDrawingSession> {
   late DrawingBloc drawingBloc;
 
+  Rect get _rect {
+    final renderObject = context.findRenderObject() as RenderBox;
+    final position = renderObject.localToGlobal(Offset.zero);
+    final size = renderObject.size;
+
+    return position & size;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -53,7 +61,9 @@ class _CurrentUserDrawingSessionState extends State<CurrentUserDrawingSession> {
   }
 
   void _onPanUpdate(DragUpdateDetails details) {
-    drawingBloc.add(DrawingEvent.penUpdate(details.localPosition));
+    if (_rect.contains(details.globalPosition)) {
+      drawingBloc.add(DrawingEvent.penUpdate(details.localPosition));
+    }
   }
 
   void _onPanEnd(DragEndDetails details) {
