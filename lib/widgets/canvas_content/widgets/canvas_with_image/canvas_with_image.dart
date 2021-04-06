@@ -1,10 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'package:image_drawing/widgets/canvas_content/widgets/canvas_with_image/widgets/current_user_drawing_session/current_user_drawing_session.dart';
-import 'package:image_drawing/widgets/canvas_content/widgets/canvas_with_image/widgets/save_layer/save_layer_controller.dart';
-import 'package:image_drawing/widgets/canvas_content/widgets/canvas_with_image/widgets/user_drawings/user_drawings.dart';
+import 'package:provider/provider.dart';
 
+import 'widgets/current_user_drawing_session/current_user_drawing_session.dart';
 import 'widgets/image_background/image_background.dart';
-import 'widgets/save_layer/save_layer.dart';
+import 'widgets/image_saver/image_saver.dart';
+import 'widgets/image_saver/image_saver_controller.dart';
+import 'widgets/user_drawings/user_drawings.dart';
 
 class CanvasWithImage extends StatelessWidget {
   const CanvasWithImage({
@@ -14,8 +15,8 @@ class CanvasWithImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SaveLayer(
-        controller: SaveLayerController(),
+      child: ImageSaver(
+        controller: Provider.of<ImageSaverController>(context),
         child: const CurrentUserDrawingSession(
           child: UserDrawings(
             child: ImageBackground(),

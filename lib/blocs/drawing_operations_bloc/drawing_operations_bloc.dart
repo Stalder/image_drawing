@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_drawing/blocs/drawing_operations_bloc/image_extractor.dart';
 import 'package:image_drawing/models/models.dart';
+
+import 'image_saver.dart';
 
 part 'drawing_operations_bloc_event.dart';
 part 'drawing_operations_bloc_state.dart';
@@ -8,9 +11,17 @@ part 'drawing_operations_bloc_state.dart';
 part 'drawing_operations_bloc.freezed.dart';
 
 class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperationsState> {
+  final ImageExtractor _imageExtractor;
+  final ImageSaver _imageSaver;
+
   final _canceledList = <DrawingLayer>[];
 
-  DrawingOperationsBloc() : super(const DrawingOperationsState.displaying([]));
+  DrawingOperationsBloc({
+    required ImageExtractor imageExtractor,
+    required ImageSaver imageSaver,
+  })   : _imageExtractor = imageExtractor,
+        _imageSaver = imageSaver,
+        super(const DrawingOperationsState.displaying([]));
 
   @override
   Stream<DrawingOperationsState> mapEventToState(DrawingOperationsEvent event) => event.when(
@@ -22,6 +33,7 @@ class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperatio
       );
 
   Stream<DrawingOperationsState> _draw(DrawingLayer layer) async* {
+    _canceledList.clear();
     yield DrawingOperationsState.displaying([...state.layers, layer]);
   }
 
@@ -34,7 +46,7 @@ class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperatio
     if (_canceledList.isNotEmpty) {
       final layerToRestore = _canceledList.removeLast();
 
-      yield* _draw(layerToRestore);
+      yield DrawingOperationsState.displaying([...state.layers, layerToRestore]);
     }
   }
 
@@ -43,6 +55,7 @@ class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperatio
   }
 
   Stream<DrawingOperationsState> _save() async* {
-    //
+    final image = await _imageExtractor.extractImage();
+    await _imageSaver.saveImage(image);
   }
 }

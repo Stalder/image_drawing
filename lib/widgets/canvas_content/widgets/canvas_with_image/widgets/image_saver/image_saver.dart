@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'package:image_drawing/widgets/canvas_content/widgets/canvas_with_image/widgets/save_layer/save_layer_controller.dart';
+import 'image_saver_controller.dart';
 
-class SaveLayer extends StatelessWidget {
-  final SaveLayerController controller;
+class ImageSaver extends StatelessWidget {
+  final ImageSaverController controller;
   final Widget child;
 
-  const SaveLayer({
+  const ImageSaver({
     required this.controller,
     required this.child,
     Key? key,
