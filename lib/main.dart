@@ -11,13 +11,6 @@ import 'widgets/choose_image_content/choose_image_content.dart';
 import 'widgets/failed_content/failed_content.dart';
 import 'widgets/image_drawing_notifier/image_drawing_notifier.dart';
 
-// TODO:
-// - Fix undo & redo for clear
-// - [DONE] Color picker
-// - [DONE] Notifications
-// - Check android
-// - [DONE] Check codestyle, leave comments
-
 void main() {
   runApp(MyApp());
 }

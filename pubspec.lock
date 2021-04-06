@@ -252,7 +252,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "07f4eb9fd8b993dc225e32344a79f9cb0d54bfcc"
+      resolved-ref: cb64bf70ea0daabac88079cee209e126c7f61018
       url: "https://github.com/Stalder/gallery_saver.git"
     source: git
     version: "2.0.3"

@@ -23,6 +23,7 @@ dependencies:
 
   gallery_saver:
     git: https://github.com/Stalder/gallery_saver.git
+    # path: /Users/lavinov/Develop/Flutter/gallery_saver
 
 dev_dependencies:
   flutter_test:
