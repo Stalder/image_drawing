@@ -1,9 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:image_drawing/blocs/drawing_operations_bloc/image_extractor.dart';
 import 'package:image_drawing/models/models.dart';
 
+import 'image_extractor.dart';
 import 'image_saver.dart';
+import 'save_notifier.dart';
 
 part 'drawing_operations_bloc_event.dart';
 part 'drawing_operations_bloc_state.dart';
@@ -13,14 +14,17 @@ part 'drawing_operations_bloc.freezed.dart';
 class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperationsState> {
   final ImageExtractor _imageExtractor;
   final ImageSaver _imageSaver;
+  final SaveNotifier _saveNotifier;
 
   final _canceledList = <DrawingLayer>[];
 
   DrawingOperationsBloc({
     required ImageExtractor imageExtractor,
     required ImageSaver imageSaver,
+    required SaveNotifier saveNotifier,
   })   : _imageExtractor = imageExtractor,
         _imageSaver = imageSaver,
+        _saveNotifier = saveNotifier,
         super(const DrawingOperationsState.displaying([]));
 
   @override
@@ -56,6 +60,11 @@ class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperatio
 
   Stream<DrawingOperationsState> _save() async* {
     final image = await _imageExtractor.extractImage();
-    await _imageSaver.saveImage(image);
+    try {
+      await _imageSaver.saveImage(image);
+      _saveNotifier.notifyAboutSuccessfullSave();
+    } catch (_) {
+      _saveNotifier.notifyAboutFailOnSave();
+    }
   }
 }

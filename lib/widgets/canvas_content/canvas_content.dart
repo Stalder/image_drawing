@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_drawing/blocs/painter_setup_bloc/painter_setup_bloc.dart';
+import 'package:image_drawing/widgets/image_drawing_notifier/image_drawing_notifier_controller.dart';
 import 'package:provider/provider.dart';
 
 import 'package:image_drawing/blocs/drawing_bloc/drawing_bloc.dart';
@@ -24,6 +25,7 @@ class CanvasContent extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => DrawingOperationsBloc(
+              saveNotifier: Provider.of<ImageDrawingNotifierController>(context, listen: false),
               imageExtractor: Provider.of<ImageExtractorController>(context, listen: false),
               imageSaver: ImageSaverService(),
             ),

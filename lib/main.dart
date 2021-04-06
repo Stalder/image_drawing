@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_drawing/services/image_picker_service.dart';
+import 'package:image_drawing/widgets/image_drawing_notifier/image_drawing_notifier_controller.dart';
+import 'package:provider/provider.dart';
 
 import 'blocs/picking_image_bloc/picking_image_bloc.dart';
 
 import 'widgets/canvas_content/canvas_content.dart';
 import 'widgets/choose_image_content/choose_image_content.dart';
+import 'widgets/failed_content/failed_content.dart';
+import 'widgets/image_drawing_notifier/image_drawing_notifier.dart';
 
 // TODO:
 // - Fix undo & redo for clear
 // - [DONE] Color picker
-// - Notifications
+// - [DONE] Notifications
 // - Check android
-// - Check codestyle, leave comments
+// - [DONE] Check codestyle, leave comments
 
 void main() {
   runApp(MyApp());
@@ -43,22 +47,30 @@ class ImageDrawingHomePage extends StatefulWidget {
 class _ImageDrawingHomePageState extends State<ImageDrawingHomePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PickingImageBloc(ImagePickerService()),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Image Drawing'),
-        ),
-        body: BlocBuilder<PickingImageBloc, PickingImageState>(
-          buildWhen: (prev, next) => next.maybeWhen(
-            initial: () => true,
-            imageSelected: (_) => true,
-            orElse: () => false,
+    return Provider(
+      create: (_) => ImageDrawingNotifierController(),
+      child: BlocProvider(
+        create: (context) => PickingImageBloc(ImagePickerService()),
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Image Drawing'),
           ),
-          builder: (context, state) => state.maybeWhen(
-            imageSelected: (_) => const CanvasContent(),
-            failed: () => const SizedBox.shrink(),
-            orElse: () => const ChooseImageContent(),
+          body: Builder(
+            builder: (context) => ImageDrawingNotifier(
+              controller: Provider.of<ImageDrawingNotifierController>(context),
+              child: BlocBuilder<PickingImageBloc, PickingImageState>(
+                buildWhen: (prev, next) => next.maybeWhen(
+                  initial: () => true,
+                  imageSelected: (_) => true,
+                  orElse: () => false,
+                ),
+                builder: (context, state) => state.maybeWhen(
+                  imageSelected: (_) => const CanvasContent(),
+                  failed: () => const FailedContent(),
+                  orElse: () => const ChooseImageContent(),
+                ),
+              ),
+            ),
           ),
         ),
       ),
