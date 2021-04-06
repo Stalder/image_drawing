@@ -8,6 +8,8 @@ part 'drawing_operations_bloc_state.dart';
 part 'drawing_operations_bloc.freezed.dart';
 
 class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperationsState> {
+  final _canceledList = <DrawingLayer>[];
+
   DrawingOperationsBloc() : super(const DrawingOperationsState.displaying([]));
 
   @override
@@ -24,15 +26,20 @@ class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperatio
   }
 
   Stream<DrawingOperationsState> _undo() async* {
-    //
+    _canceledList.add(state.layers.last);
+    yield DrawingOperationsState.displaying(state.layers.whereNot((layer) => layer == state.layers.last).toList());
   }
 
   Stream<DrawingOperationsState> _redo() async* {
-    //
+    if (_canceledList.isNotEmpty) {
+      final layerToRestore = _canceledList.removeLast();
+
+      yield* _draw(layerToRestore);
+    }
   }
 
   Stream<DrawingOperationsState> _clear() async* {
-    //
+    yield const DrawingOperationsState.displaying([]);
   }
 
   Stream<DrawingOperationsState> _save() async* {
