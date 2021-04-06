@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:image_drawing/blocs/picking_image_bloc/picking_image_bloc.dart';
 
 class ImageBackground extends StatelessWidget {

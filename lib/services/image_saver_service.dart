@@ -5,6 +5,9 @@ import 'package:gallery_saver/gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:image_drawing/blocs/drawing_operations_bloc/image_saver.dart';
 
+// This service might be optimized
+// Right now, due to package constraints it's firstly saves image to temp dir and then uses package to move
+// image from temp to gallery. It's possible to implement direct save to gallery
 class ImageSaverService implements ImageSaver {
   @override
   Future<void> saveImage(Image image) async {

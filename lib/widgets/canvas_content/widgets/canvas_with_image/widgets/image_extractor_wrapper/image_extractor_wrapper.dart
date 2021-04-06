@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'image_saver_controller.dart';
+import 'image_extractor_controller.dart';
 
-class ImageSaver extends StatelessWidget {
-  final ImageSaverController controller;
+class ImageExtractorWrapper extends StatelessWidget {
+  final ImageExtractorController controller;
   final Widget child;
 
-  const ImageSaver({
+  const ImageExtractorWrapper({
     required this.controller,
     required this.child,
     Key? key,

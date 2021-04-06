@@ -7,7 +7,7 @@ import 'package:image_drawing/blocs/drawing_bloc/drawing_bloc.dart';
 import 'package:image_drawing/blocs/drawing_operations_bloc/drawing_operations_bloc.dart';
 import 'package:image_drawing/services/image_saver_service.dart';
 
-import 'widgets/canvas_with_image/widgets/image_saver/image_saver_controller.dart';
+import 'widgets/canvas_with_image/widgets/image_extractor_wrapper/image_extractor_controller.dart';
 import 'widgets/tools_panel/tools_panel.dart';
 import 'widgets/canvas_with_image/canvas_with_image.dart';
 
@@ -19,12 +19,12 @@ class CanvasContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (_) => ImageSaverController(MediaQuery.of(context).devicePixelRatio),
+      create: (_) => ImageExtractorController(MediaQuery.of(context).devicePixelRatio),
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) => DrawingOperationsBloc(
-              imageExtractor: Provider.of<ImageSaverController>(context, listen: false),
+              imageExtractor: Provider.of<ImageExtractorController>(context, listen: false),
               imageSaver: ImageSaverService(),
             ),
           ),

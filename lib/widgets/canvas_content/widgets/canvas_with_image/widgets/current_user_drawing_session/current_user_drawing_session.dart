@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:image_drawing/blocs/drawing_bloc/drawing_bloc.dart';
 import 'package:image_drawing/blocs/painter_setup_bloc/painter_setup_bloc.dart';
 import 'package:image_drawing/models/models.dart';
