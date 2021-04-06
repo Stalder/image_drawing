@@ -55,6 +55,7 @@ class _ImageDrawingHomePageState extends State<ImageDrawingHomePage> {
                 buildWhen: (prev, next) => next.maybeWhen(
                   initial: () => true,
                   imageSelected: (_) => true,
+                  failed: () => true,
                   orElse: () => false,
                 ),
                 builder: (context, state) => state.maybeWhen(
