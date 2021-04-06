@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_drawing/blocs/painter_setup_bloc/painter_setup_bloc.dart';
 import 'package:provider/provider.dart';
 
 import 'package:image_drawing/blocs/drawing_bloc/drawing_bloc.dart';
@@ -19,19 +20,24 @@ class CanvasContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
       create: (_) => ImageSaverController(MediaQuery.of(context).devicePixelRatio),
-      child: BlocProvider(
-        create: (context) => DrawingOperationsBloc(
-          imageExtractor: Provider.of<ImageSaverController>(context, listen: false),
-          imageSaver: ImageSaverService(),
-        ),
-        child: BlocProvider(
-          create: (context) => DrawingBloc(BlocProvider.of<DrawingOperationsBloc>(context, listen: false)),
-          child: Stack(
-            children: const [
-              CanvasWithImage(),
-              ToolsPanel(),
-            ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => DrawingOperationsBloc(
+              imageExtractor: Provider.of<ImageSaverController>(context, listen: false),
+              imageSaver: ImageSaverService(),
+            ),
           ),
+          BlocProvider(
+            create: (context) => DrawingBloc(BlocProvider.of<DrawingOperationsBloc>(context, listen: false)),
+          ),
+          BlocProvider(create: (context) => PainterSetupBloc()),
+        ],
+        child: Stack(
+          children: const [
+            CanvasWithImage(),
+            ToolsPanel(),
+          ],
         ),
       ),
     );

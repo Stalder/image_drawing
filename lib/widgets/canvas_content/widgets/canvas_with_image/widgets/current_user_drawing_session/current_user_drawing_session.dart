@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart' show Colors;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_drawing/blocs/drawing_bloc/drawing_bloc.dart';
+import 'package:image_drawing/blocs/painter_setup_bloc/painter_setup_bloc.dart';
 import 'package:image_drawing/models/models.dart';
 import 'package:image_drawing/widgets/canvas_content/widgets/canvas_with_image/extensions/canvas_extension.dart';
 
@@ -57,7 +57,9 @@ class _CurrentUserDrawingSessionState extends State<CurrentUserDrawingSession> {
   }
 
   void _onPanStart(DragStartDetails details) {
-    drawingBloc.add(DrawingEvent.penDown(details.localPosition, Colors.black));
+    final painterSetupBloc = BlocProvider.of<PainterSetupBloc>(context);
+
+    drawingBloc.add(DrawingEvent.penDown(details.localPosition, painterSetupBloc.state.color));
   }
 
   void _onPanUpdate(DragUpdateDetails details) {

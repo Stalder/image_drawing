@@ -7,6 +7,13 @@ import 'blocs/picking_image_bloc/picking_image_bloc.dart';
 import 'widgets/canvas_content/canvas_content.dart';
 import 'widgets/choose_image_content/choose_image_content.dart';
 
+// TODO:
+// - Fix undo & redo for clear
+// - [DONE] Color picker
+// - Notifications
+// - Check android
+// - Check codestyle, leave comments
+
 void main() {
   runApp(MyApp());
 }

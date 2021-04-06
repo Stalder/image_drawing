@@ -6,6 +6,7 @@ import 'widgets/redo_button/redo_button.dart';
 import 'widgets/clear_button/clear_button.dart';
 import 'widgets/save_button/save_button.dart';
 import 'widgets/close_image_button/close_image_button.dart';
+import 'widgets/color_palette_button/color_palette_button.dart';
 
 class ToolsPanel extends StatelessWidget {
   const ToolsPanel({
@@ -18,6 +19,7 @@ class ToolsPanel extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: const [
+          ColorPaletteButton(),
           UndoButton(),
           RedoButton(),
           ClearButton(),
