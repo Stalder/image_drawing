@@ -19,8 +19,8 @@ class DrawingOperationsBloc extends Bloc<DrawingOperationsEvent, DrawingOperatio
         save: _save,
       );
 
-  Stream<DrawingOperationsState> _draw() async* {
-    //
+  Stream<DrawingOperationsState> _draw(DrawingLayer layer) async* {
+    yield DrawingOperationsState.displaying([...state.layers, layer]);
   }
 
   Stream<DrawingOperationsState> _undo() async* {

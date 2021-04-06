@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DrawingOperationsEventTearOff {
   const _$DrawingOperationsEventTearOff();
 
-  _DrawingOperationsEventDraw draw() {
-    return const _DrawingOperationsEventDraw();
+  _DrawingOperationsEventDraw draw(DrawingLayer layer) {
+    return _DrawingOperationsEventDraw(
+      layer,
+    );
   }
 
   _DrawingOperationsEventUndo undo() {
@@ -44,7 +46,7 @@ const $DrawingOperationsEvent = _$DrawingOperationsEventTearOff();
 mixin _$DrawingOperationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() draw,
+    required TResult Function(DrawingLayer layer) draw,
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function() clear,
@@ -53,7 +55,7 @@ mixin _$DrawingOperationsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? draw,
+    TResult Function(DrawingLayer layer)? draw,
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function()? clear,
@@ -105,6 +107,9 @@ abstract class _$DrawingOperationsEventDrawCopyWith<$Res> {
           _DrawingOperationsEventDraw value,
           $Res Function(_DrawingOperationsEventDraw) then) =
       __$DrawingOperationsEventDrawCopyWithImpl<$Res>;
+  $Res call({DrawingLayer layer});
+
+  $DrawingLayerCopyWith<$Res> get layer;
 }
 
 /// @nodoc
@@ -118,41 +123,73 @@ class __$DrawingOperationsEventDrawCopyWithImpl<$Res>
   @override
   _DrawingOperationsEventDraw get _value =>
       super._value as _DrawingOperationsEventDraw;
+
+  @override
+  $Res call({
+    Object? layer = freezed,
+  }) {
+    return _then(_DrawingOperationsEventDraw(
+      layer == freezed
+          ? _value.layer
+          : layer // ignore: cast_nullable_to_non_nullable
+              as DrawingLayer,
+    ));
+  }
+
+  @override
+  $DrawingLayerCopyWith<$Res> get layer {
+    return $DrawingLayerCopyWith<$Res>(_value.layer, (value) {
+      return _then(_value.copyWith(layer: value));
+    });
+  }
 }
 
 /// @nodoc
 class _$_DrawingOperationsEventDraw implements _DrawingOperationsEventDraw {
-  const _$_DrawingOperationsEventDraw();
+  const _$_DrawingOperationsEventDraw(this.layer);
+
+  @override
+  final DrawingLayer layer;
 
   @override
   String toString() {
-    return 'DrawingOperationsEvent.draw()';
+    return 'DrawingOperationsEvent.draw(layer: $layer)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _DrawingOperationsEventDraw);
+    return identical(this, other) ||
+        (other is _DrawingOperationsEventDraw &&
+            (identical(other.layer, layer) ||
+                const DeepCollectionEquality().equals(other.layer, layer)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(layer);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DrawingOperationsEventDrawCopyWith<_DrawingOperationsEventDraw>
+      get copyWith => __$DrawingOperationsEventDrawCopyWithImpl<
+          _DrawingOperationsEventDraw>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() draw,
+    required TResult Function(DrawingLayer layer) draw,
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function() clear,
     required TResult Function() save,
   }) {
-    return draw();
+    return draw(layer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? draw,
+    TResult Function(DrawingLayer layer)? draw,
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function()? clear,
@@ -160,7 +197,7 @@ class _$_DrawingOperationsEventDraw implements _DrawingOperationsEventDraw {
     required TResult orElse(),
   }) {
     if (draw != null) {
-      return draw();
+      return draw(layer);
     }
     return orElse();
   }
@@ -195,7 +232,13 @@ class _$_DrawingOperationsEventDraw implements _DrawingOperationsEventDraw {
 }
 
 abstract class _DrawingOperationsEventDraw implements DrawingOperationsEvent {
-  const factory _DrawingOperationsEventDraw() = _$_DrawingOperationsEventDraw;
+  const factory _DrawingOperationsEventDraw(DrawingLayer layer) =
+      _$_DrawingOperationsEventDraw;
+
+  DrawingLayer get layer => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DrawingOperationsEventDrawCopyWith<_DrawingOperationsEventDraw>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -239,7 +282,7 @@ class _$_DrawingOperationsEventUndo implements _DrawingOperationsEventUndo {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() draw,
+    required TResult Function(DrawingLayer layer) draw,
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function() clear,
@@ -251,7 +294,7 @@ class _$_DrawingOperationsEventUndo implements _DrawingOperationsEventUndo {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? draw,
+    TResult Function(DrawingLayer layer)? draw,
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function()? clear,
@@ -338,7 +381,7 @@ class _$_DrawingOperationsEventRedo implements _DrawingOperationsEventRedo {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() draw,
+    required TResult Function(DrawingLayer layer) draw,
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function() clear,
@@ -350,7 +393,7 @@ class _$_DrawingOperationsEventRedo implements _DrawingOperationsEventRedo {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? draw,
+    TResult Function(DrawingLayer layer)? draw,
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function()? clear,
@@ -438,7 +481,7 @@ class _$_DrawingOperationsEventClear implements _DrawingOperationsEventClear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() draw,
+    required TResult Function(DrawingLayer layer) draw,
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function() clear,
@@ -450,7 +493,7 @@ class _$_DrawingOperationsEventClear implements _DrawingOperationsEventClear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? draw,
+    TResult Function(DrawingLayer layer)? draw,
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function()? clear,
@@ -537,7 +580,7 @@ class _$_DrawingOperationsEventSave implements _DrawingOperationsEventSave {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() draw,
+    required TResult Function(DrawingLayer layer) draw,
     required TResult Function() undo,
     required TResult Function() redo,
     required TResult Function() clear,
@@ -549,7 +592,7 @@ class _$_DrawingOperationsEventSave implements _DrawingOperationsEventSave {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? draw,
+    TResult Function(DrawingLayer layer)? draw,
     TResult Function()? undo,
     TResult Function()? redo,
     TResult Function()? clear,

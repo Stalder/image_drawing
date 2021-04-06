@@ -15,7 +15,7 @@ class CanvasContent extends StatelessWidget {
     return BlocProvider(
       create: (_) => DrawingOperationsBloc(),
       child: BlocProvider(
-        create: (context) => DrawingBloc(),
+        create: (context) => DrawingBloc(BlocProvider.of<DrawingOperationsBloc>(context)),
         child: Stack(
           children: const [
             CanvasWithImage(),

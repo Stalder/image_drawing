@@ -16,12 +16,17 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DrawingEventTearOff {
   const _$DrawingEventTearOff();
 
-  _DrawingEventPenDown penDown() {
-    return const _DrawingEventPenDown();
+  _DrawingEventPenDown penDown(Offset point, Color color) {
+    return _DrawingEventPenDown(
+      point,
+      color,
+    );
   }
 
-  _DrawingEventPenUpdate penUpdate() {
-    return const _DrawingEventPenUpdate();
+  _DrawingEventPenUpdate penUpdate(Offset point) {
+    return _DrawingEventPenUpdate(
+      point,
+    );
   }
 
   _DrawingEventPenUp penUp() {
@@ -36,15 +41,15 @@ const $DrawingEvent = _$DrawingEventTearOff();
 mixin _$DrawingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() penDown,
-    required TResult Function() penUpdate,
+    required TResult Function(Offset point, Color color) penDown,
+    required TResult Function(Offset point) penUpdate,
     required TResult Function() penUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? penDown,
-    TResult Function()? penUpdate,
+    TResult Function(Offset point, Color color)? penDown,
+    TResult Function(Offset point)? penUpdate,
     TResult Function()? penUp,
     required TResult orElse(),
   }) =>
@@ -87,6 +92,7 @@ abstract class _$DrawingEventPenDownCopyWith<$Res> {
   factory _$DrawingEventPenDownCopyWith(_DrawingEventPenDown value,
           $Res Function(_DrawingEventPenDown) then) =
       __$DrawingEventPenDownCopyWithImpl<$Res>;
+  $Res call({Offset point, Color color});
 }
 
 /// @nodoc
@@ -99,45 +105,81 @@ class __$DrawingEventPenDownCopyWithImpl<$Res>
 
   @override
   _DrawingEventPenDown get _value => super._value as _DrawingEventPenDown;
+
+  @override
+  $Res call({
+    Object? point = freezed,
+    Object? color = freezed,
+  }) {
+    return _then(_DrawingEventPenDown(
+      point == freezed
+          ? _value.point
+          : point // ignore: cast_nullable_to_non_nullable
+              as Offset,
+      color == freezed
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_DrawingEventPenDown implements _DrawingEventPenDown {
-  const _$_DrawingEventPenDown();
+  const _$_DrawingEventPenDown(this.point, this.color);
+
+  @override
+  final Offset point;
+  @override
+  final Color color;
 
   @override
   String toString() {
-    return 'DrawingEvent.penDown()';
+    return 'DrawingEvent.penDown(point: $point, color: $color)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _DrawingEventPenDown);
+    return identical(this, other) ||
+        (other is _DrawingEventPenDown &&
+            (identical(other.point, point) ||
+                const DeepCollectionEquality().equals(other.point, point)) &&
+            (identical(other.color, color) ||
+                const DeepCollectionEquality().equals(other.color, color)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(point) ^
+      const DeepCollectionEquality().hash(color);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DrawingEventPenDownCopyWith<_DrawingEventPenDown> get copyWith =>
+      __$DrawingEventPenDownCopyWithImpl<_DrawingEventPenDown>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() penDown,
-    required TResult Function() penUpdate,
+    required TResult Function(Offset point, Color color) penDown,
+    required TResult Function(Offset point) penUpdate,
     required TResult Function() penUp,
   }) {
-    return penDown();
+    return penDown(point, color);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? penDown,
-    TResult Function()? penUpdate,
+    TResult Function(Offset point, Color color)? penDown,
+    TResult Function(Offset point)? penUpdate,
     TResult Function()? penUp,
     required TResult orElse(),
   }) {
     if (penDown != null) {
-      return penDown();
+      return penDown(point, color);
     }
     return orElse();
   }
@@ -168,7 +210,14 @@ class _$_DrawingEventPenDown implements _DrawingEventPenDown {
 }
 
 abstract class _DrawingEventPenDown implements DrawingEvent {
-  const factory _DrawingEventPenDown() = _$_DrawingEventPenDown;
+  const factory _DrawingEventPenDown(Offset point, Color color) =
+      _$_DrawingEventPenDown;
+
+  Offset get point => throw _privateConstructorUsedError;
+  Color get color => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DrawingEventPenDownCopyWith<_DrawingEventPenDown> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -176,6 +225,7 @@ abstract class _$DrawingEventPenUpdateCopyWith<$Res> {
   factory _$DrawingEventPenUpdateCopyWith(_DrawingEventPenUpdate value,
           $Res Function(_DrawingEventPenUpdate) then) =
       __$DrawingEventPenUpdateCopyWithImpl<$Res>;
+  $Res call({Offset point});
 }
 
 /// @nodoc
@@ -188,45 +238,70 @@ class __$DrawingEventPenUpdateCopyWithImpl<$Res>
 
   @override
   _DrawingEventPenUpdate get _value => super._value as _DrawingEventPenUpdate;
+
+  @override
+  $Res call({
+    Object? point = freezed,
+  }) {
+    return _then(_DrawingEventPenUpdate(
+      point == freezed
+          ? _value.point
+          : point // ignore: cast_nullable_to_non_nullable
+              as Offset,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_DrawingEventPenUpdate implements _DrawingEventPenUpdate {
-  const _$_DrawingEventPenUpdate();
+  const _$_DrawingEventPenUpdate(this.point);
+
+  @override
+  final Offset point;
 
   @override
   String toString() {
-    return 'DrawingEvent.penUpdate()';
+    return 'DrawingEvent.penUpdate(point: $point)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _DrawingEventPenUpdate);
+    return identical(this, other) ||
+        (other is _DrawingEventPenUpdate &&
+            (identical(other.point, point) ||
+                const DeepCollectionEquality().equals(other.point, point)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(point);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DrawingEventPenUpdateCopyWith<_DrawingEventPenUpdate> get copyWith =>
+      __$DrawingEventPenUpdateCopyWithImpl<_DrawingEventPenUpdate>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() penDown,
-    required TResult Function() penUpdate,
+    required TResult Function(Offset point, Color color) penDown,
+    required TResult Function(Offset point) penUpdate,
     required TResult Function() penUp,
   }) {
-    return penUpdate();
+    return penUpdate(point);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? penDown,
-    TResult Function()? penUpdate,
+    TResult Function(Offset point, Color color)? penDown,
+    TResult Function(Offset point)? penUpdate,
     TResult Function()? penUp,
     required TResult orElse(),
   }) {
     if (penUpdate != null) {
-      return penUpdate();
+      return penUpdate(point);
     }
     return orElse();
   }
@@ -257,7 +332,12 @@ class _$_DrawingEventPenUpdate implements _DrawingEventPenUpdate {
 }
 
 abstract class _DrawingEventPenUpdate implements DrawingEvent {
-  const factory _DrawingEventPenUpdate() = _$_DrawingEventPenUpdate;
+  const factory _DrawingEventPenUpdate(Offset point) = _$_DrawingEventPenUpdate;
+
+  Offset get point => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DrawingEventPenUpdateCopyWith<_DrawingEventPenUpdate> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -299,8 +379,8 @@ class _$_DrawingEventPenUp implements _DrawingEventPenUp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() penDown,
-    required TResult Function() penUpdate,
+    required TResult Function(Offset point, Color color) penDown,
+    required TResult Function(Offset point) penUpdate,
     required TResult Function() penUp,
   }) {
     return penUp();
@@ -309,8 +389,8 @@ class _$_DrawingEventPenUp implements _DrawingEventPenUp {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? penDown,
-    TResult Function()? penUpdate,
+    TResult Function(Offset point, Color color)? penDown,
+    TResult Function(Offset point)? penUpdate,
     TResult Function()? penUp,
     required TResult orElse(),
   }) {
